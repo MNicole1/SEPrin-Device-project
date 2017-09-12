@@ -17,10 +17,17 @@ public class FourBitTwoDisclosureDeviceUnlocker extends DeviceUnlocker {
      * @return true if the resource is unlocked (all bits in the
      *         device are now identical); false otherwise
      */
-    @Override
     public static boolean unlock(final Device dev) {
-        // TODO
-        return false;
+        boolean unlocked = false;
+        for (int i = 0; i < 1000; i++) {
+            unlocked = dev.spin();
+            if (unlocked) {
+                break;
+            }
+            dev.peek("??  ");
+            dev.poke("TT  ");
+        }
+        return unlocked;
     }
 
     // Note that log and showTrace are already implemented in DeviceUnlocker
