@@ -46,8 +46,16 @@ Create a 4-bit, 2-disclosure device unlocker and surrounding classes.
 * 9-12-2017
     * Meeting at 2PM
          * Agenda
+             * Algorithms
              * Divide work among people
              * Discus algorithm
              * Branching strategy
          * Notes:
-             * 
+             * Algorithms
+                 * Besides basic: `spin(); peek("??  "); poke("TT  ")`
+             * Work to be done
+                 * Method from abstract class
+                     * `unlock()`
+                 * Integrate code
+             * Branching:
+                 * Named branch for each person
