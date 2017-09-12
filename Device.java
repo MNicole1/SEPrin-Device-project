@@ -1,12 +1,4 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 import java.util.Arrays;
-import java.util.function.IntFunction;
-import java.util.function.IntPredicate;
-import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
 public class Device {
@@ -45,8 +37,8 @@ public class Device {
 
     public boolean spin() {
         if (this.state == Device.State.SPUN ||
-            this.state == Device.State.PEEKED ||
-            this.state == Device.State.POKED) {
+                this.state == Device.State.PEEKED ||
+                this.state == Device.State.POKED) {
             for(int numSpins = (int)(Math.random() * (double)this.size);
                 numSpins > 0; --numSpins) {
                 Device current = this;
@@ -62,24 +54,20 @@ public class Device {
             this.state = Device.State.SPUN;
         }
 
-        return !IntStream.range(0, this.bits.length).mapToObj((var1x) -> {
-            return this.bits[var1x];
-        }).anyMatch((var0) -> {
-            return !var0.booleanValue();
-        }) || !IntStream.range(0, this.bits.length).mapToObj((var1x) -> {
-            return this.bits[var1x];
-        }).anyMatch((var0) -> {
-            return var0.booleanValue();
-        });
+        // Using a lambda to check if all 1s or all 0s
+        return IntStream.range(0, this.bits.length).mapToObj((i) -> this.bits[i])
+                .noneMatch((x) -> x) ||
+               IntStream.range(0, this.bits.length).mapToObj((i) -> this
+                       .bits[i]).allMatch((x) -> x);
     }
 
     public CharSequence peek(CharSequence pattern) {
         char[] peekArr = new char[this.size];
         if (this.state == Device.State.SPUN &&
-            pattern.length() == this.size &&
-            (long)this.bitsPerPeek >= pattern.chars().filter((x) -> {
-                return x == '?';
-            }).count()) {
+                pattern.length() == this.size &&
+                (long)this.bitsPerPeek >= pattern.chars().filter((x) -> {
+                    return x == '?';
+                }).count()) {
             this.peekPattern = pattern;
             this.state = Device.State.PEEKED;
 
@@ -97,12 +85,12 @@ public class Device {
 
     public void poke(CharSequence pattern) {
         if (this.state == Device.State.PEEKED &&
-            pattern.length() == this.size &&
-            this.peekPattern != null &&
-            this.peekPattern.length() == this.size &&
-            (long)this.bitsPerPeek >= this.peekPattern.chars().filter((x) -> {
-                return x == '?';
-            }).count()) {
+                pattern.length() == this.size &&
+                this.peekPattern != null &&
+                this.peekPattern.length() == this.size &&
+                (long)this.bitsPerPeek >= this.peekPattern.chars().filter((x) -> {
+                    return x == '?';
+                }).count()) {
             this.state = Device.State.POKED;
 
             for(int i = 0; i < this.size; ++i) {
