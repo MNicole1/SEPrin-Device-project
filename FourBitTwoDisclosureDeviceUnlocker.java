@@ -18,15 +18,23 @@ public class FourBitTwoDisclosureDeviceUnlocker extends DeviceUnlocker {
      *         device are now identical); false otherwise
      */
     public static boolean unlock(final Device dev) {
+        log(null); // Clear trace
         boolean unlocked = false;
         for (int i = 0; i < 1000; i++) {
+            log("Cycle #" + i);
+            log("spin()");
             unlocked = dev.spin();
             if (unlocked) {
+                log("Unlocked after " + i + " tries.");
                 break;
             }
-            dev.peek("??  ");
+            log("peek(\"??  \")");
+            CharSequence peekResult = dev.peek("??  ");
+            log("peek result: \"" + peekResult + "\"");
+            log("poke(\"TT  \")");
             dev.poke("TT  ");
         }
+
         return unlocked;
     }
 
