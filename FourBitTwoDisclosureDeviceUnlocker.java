@@ -3,6 +3,7 @@
  *
  * @author Dr. Jody Paul - API
  * @author Marco Nicoleti
+ * @author Anthony Ales
  * @version 1.1.5
  * @see Device
  * @see <a href="../projectDescription.html">Project Description</a>
