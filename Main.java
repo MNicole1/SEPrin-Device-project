@@ -4,17 +4,18 @@ public class Main {
         boolean allPass = true;
 
         System.out.println("Testing unlock");
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 1000; i++) {
             Device dev = new Device(4, 2);
             if (!FourBitTwoDisclosureDeviceUnlocker.unlock(dev)) {
                 System.out.println("Failure on try #"+ i);
                 allPass = false;
             }
-            System.out.println(i);
+            String trace = FourBitTwoDisclosureDeviceUnlocker.showTrace();
+            System.out.println(trace);
         }
 
         if (allPass) {
-            System.out.println("All 10000 tests passed!");
+            System.out.println("All 1000 tests passed!");
         }
     }
 }
