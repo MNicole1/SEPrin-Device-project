@@ -20,7 +20,7 @@ public class FourBitTwoDisclosureDeviceUnlocker extends DeviceUnlocker {
     public static boolean unlock(final Device dev) {
         log(null); // Clear trace
         boolean unlocked = false;
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 100; i++) {
             log("Cycle #" + i);
             log("spin()");
             unlocked = dev.spin();
