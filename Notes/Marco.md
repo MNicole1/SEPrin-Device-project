@@ -59,3 +59,13 @@ Create a 4-bit, 2-disclosure device unlocker and surrounding classes.
                  * Integrate code
              * Branching:
                  * Named branch for each person
+* 9-14-2017
+    * Meeting at 2PM
+        * Agenda
+            * Finalize plans for turn in
+        * Notes
+            * Document code as it exists
+            * Ensure everyone can commit to the repository
+            * Add names to `@author` tags
+            * Add new idea for randomizing ? location
+            * Don't forget to use the GitHub Notes/ folder 
