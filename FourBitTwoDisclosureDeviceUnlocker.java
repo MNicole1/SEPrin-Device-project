@@ -5,6 +5,7 @@
  * @author Marco Nicoletti
  * @author Anthony Ales
  * @author Michael Brown
+ * @author Daniel Collier
  * @version 1.1.5
  * @see Device
  * @see <a href="../projectDescription.html">Project Description</a>
@@ -21,7 +22,7 @@ public class FourBitTwoDisclosureDeviceUnlocker extends DeviceUnlocker {
      */
     public static boolean unlock(final Device dev) {
         log(null); // Clear trace
-        boolean unlocked = false;
+        boolean unlocked = false; // DC: Could use some javadoc comments for this variable
         for (int i = 0; i < 100; i++) {
             log("Cycle #" + i);
             log("spin()");
