@@ -2,7 +2,7 @@
  * Solution development for 4-bit/2-disclosure device.
  *
  * @author Dr. Jody Paul - API
- * @author Marco Nicoleti
+ * @author Marco Nicoletti
  * @author Anthony Ales
  * @version 1.1.5
  * @see Device
