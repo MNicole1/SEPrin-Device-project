@@ -6,6 +6,7 @@
  * @author Anthony Ales
  * @author Michael Brown
  * @author Daniel Collier
+ * @author Alex Jones
  * @version 1.1.5
  * @see Device
  * @see <a href="../projectDescription.html">Project Description</a>
