@@ -23,7 +23,7 @@ public class FourBitTwoDisclosureDeviceUnlocker extends DeviceUnlocker {
      */
     public static boolean unlock(final Device dev) {
         log(null); // Clear trace
-        boolean unlocked = false; // DC: Could use some javadoc comments for this variable
+        boolean unlocked = false; // set to true if all bits are identical
         for (int i = 0; i < 100; i++) {
             log("Cycle #" + i);
             log("spin()");
