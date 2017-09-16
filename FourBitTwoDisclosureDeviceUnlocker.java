@@ -45,7 +45,7 @@ public class FourBitTwoDisclosureDeviceUnlocker extends DeviceUnlocker {
             CharSequence peekResult = dev.peek(peekPattern);
             log("peek result: \"" + peekResult + "\"");
 
-            String pokePattern = peekPattern.replace('?', 'T');
+            String pokePattern = peekPattern.replace('?', Device.VALUE_TRUE);
             log("poke(\"" + pokePattern + "\")");
             dev.poke(pokePattern);
         }
