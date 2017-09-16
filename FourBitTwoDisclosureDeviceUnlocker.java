@@ -44,8 +44,8 @@ public class FourBitTwoDisclosureDeviceUnlocker extends DeviceUnlocker {
             dev.poke("TT  ");
         }
 
-        // By now unlocked is true if we were successful in unlocking the device
-        // and false if we reached 100 tries without success.
+        // By now unlocked is true if we were successful in unlocking
+        // the device and false if we reached 100 tries without success.
         return unlocked;
     }
 
