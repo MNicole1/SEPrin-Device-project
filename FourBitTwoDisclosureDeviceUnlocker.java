@@ -1,3 +1,7 @@
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Solution development for 4-bit/2-disclosure device.
  *
@@ -21,7 +25,7 @@ public class FourBitTwoDisclosureDeviceUnlocker extends DeviceUnlocker {
      * @return true if the resource is unlocked (all bits in the
      *         device are now identical); false otherwise
      */
-    public static boolean unlock(final Device dev) {
+    public static boolean unlock (final Device dev) {
         log(null); // Clear trace
         boolean unlocked = false;
 
@@ -36,17 +40,29 @@ public class FourBitTwoDisclosureDeviceUnlocker extends DeviceUnlocker {
                 break;
             }
 
-            log("peek(\"??  \")");
-            CharSequence peekResult = dev.peek("??  ");
+            String peekPattern = randomPeekPattern('?', '?','-','-');
+            log("peek(\"" + peekPattern + "\")");
+            CharSequence peekResult = dev.peek(peekPattern);
             log("peek result: \"" + peekResult + "\"");
 
-            log("poke(\"TT  \")");
-            dev.poke("TT  ");
+            String pokePattern = peekPattern.replace('?', 'T');
+            log("poke(\"" + pokePattern + "\")");
+            dev.poke(pokePattern);
         }
 
         // By now unlocked is true if we were successful in unlocking the device
         // and false if we reached 100 tries without success.
         return unlocked;
+    }
+
+    private static String randomPeekPattern (Character... chars) {
+        List<Character> baseList = Arrays.asList(chars);
+        Collections.shuffle(baseList);
+        StringBuilder temp = new StringBuilder();
+        for (Character c : baseList) {
+            temp.append(c);
+        }
+        return temp.toString();
     }
 
     // Note that log and showTrace are already implemented in DeviceUnlocker
