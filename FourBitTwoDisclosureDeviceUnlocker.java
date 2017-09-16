@@ -40,7 +40,7 @@ public class FourBitTwoDisclosureDeviceUnlocker extends DeviceUnlocker {
                 break;
             }
 
-            String peekPattern = randomPeekPattern('?', '?','-','-');
+            String peekPattern = shufflePattern('?', '?', '-', '-');
             log("peek(\"" + peekPattern + "\")");
             CharSequence peekResult = dev.peek(peekPattern);
             log("peek result: \"" + peekResult + "\"");
@@ -50,19 +50,27 @@ public class FourBitTwoDisclosureDeviceUnlocker extends DeviceUnlocker {
             dev.poke(pokePattern);
         }
 
-        // By now unlocked is true if we were successful in unlocking the device
-        // and false if we reached 100 tries without success.
+        // By now unlocked is true if we were successful in unlocking
+        // the device and false if we reached 100 tries without success.
         return unlocked;
     }
 
-    private static String randomPeekPattern (Character... chars) {
+    /**
+     * Takes an array of characters and returns a random permutation of them
+     * as a string.
+     * @param chars an arbitrary length array of Character objects.
+     * @return a string representing a permutation of the input characters.
+     */
+    private static String shufflePattern (Character... chars) {
         List<Character> baseList = Arrays.asList(chars);
+
         Collections.shuffle(baseList);
-        StringBuilder temp = new StringBuilder();
+
+        StringBuilder returnValue = new StringBuilder();
         for (Character c : baseList) {
-            temp.append(c);
+            returnValue.append(c);
         }
-        return temp.toString();
+        return returnValue.toString();
     }
 
     // Note that log and showTrace are already implemented in DeviceUnlocker
