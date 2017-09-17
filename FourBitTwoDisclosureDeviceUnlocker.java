@@ -1,3 +1,7 @@
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Solution development for 4-bit/2-disclosure device.
  *
@@ -21,7 +25,7 @@ public class FourBitTwoDisclosureDeviceUnlocker extends DeviceUnlocker {
      * @return true if the resource is unlocked (all bits in the
      *         device are now identical); false otherwise
      */
-    public static boolean unlock(final Device dev) {
+    public static boolean unlock (final Device dev) {
         log(null); // Clear trace
         boolean unlocked = false;
 
@@ -36,17 +40,37 @@ public class FourBitTwoDisclosureDeviceUnlocker extends DeviceUnlocker {
                 break;
             }
 
-            log("peek(\"??  \")");
-            CharSequence peekResult = dev.peek("??  ");
+            String peekPattern = shufflePattern('?', '?', '-', '-');
+            log("peek(\"" + peekPattern + "\")");
+            CharSequence peekResult = dev.peek(peekPattern);
             log("peek result: \"" + peekResult + "\"");
 
-            log("poke(\"TT  \")");
-            dev.poke("TT  ");
+            String pokePattern = peekPattern.replace('?', Device.VALUE_TRUE);
+            log("poke(\"" + pokePattern + "\")");
+            dev.poke(pokePattern);
         }
 
         // By now unlocked is true if we were successful in unlocking
         // the device and false if we reached 100 tries without success.
         return unlocked;
+    }
+
+    /**
+     * Takes an array of characters and returns a random permutation of them
+     * as a string.
+     * @param chars an arbitrary length array of Character objects.
+     * @return a string representing a permutation of the input characters.
+     */
+    private static String shufflePattern (Character... chars) {
+        List<Character> baseList = Arrays.asList(chars);
+
+        Collections.shuffle(baseList);
+
+        StringBuilder returnValue = new StringBuilder();
+        for (Character c : baseList) {
+            returnValue.append(c);
+        }
+        return returnValue.toString();
     }
 
     // Note that log and showTrace are already implemented in DeviceUnlocker
