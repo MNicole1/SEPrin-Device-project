@@ -69,3 +69,12 @@ Create a 4-bit, 2-disclosure device unlocker and surrounding classes.
             * Add names to `@author` tags
             * Add new idea for randomizing ? location
             * Don't forget to use the GitHub Notes/ folder 
+* 9-19-2017
+    * In class:
+        * Agenda:
+            * What model did we most closely emulate?
+        * Notes:
+            * What model did we most closely emulate?
+                * Model: Waterfall Model
+                * Differences:
+                    * Not strict stages
